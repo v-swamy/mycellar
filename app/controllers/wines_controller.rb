@@ -1,7 +1,7 @@
 class WinesController < ApplicationController
   before_action :require_user_login
-  before_action :set_wine, only: [:show, :edit, :update]
-  before_action :require_same_user, only: [:show, :edit, :update]
+  before_action :set_wine, only: [:show, :edit, :update, :destroy]
+  before_action :require_same_user, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -37,6 +37,12 @@ class WinesController < ApplicationController
       flash[:danger] = "Please fix the below errors."
       render 'edit'
     end
+  end
+
+  def destroy
+    @wine.destroy
+    flash[:warning] = "Your wine has been deleted."
+    redirect_to home_path
   end
 
   private

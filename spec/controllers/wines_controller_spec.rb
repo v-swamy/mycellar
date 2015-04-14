@@ -152,4 +152,34 @@ describe WinesController do
       end
     end
   end
+
+  describe "DELETE destroy" do
+    let(:user) { Fabricate(:user) }
+    let(:wine) { Fabricate(:wine, user: user)}
+    let(:wine2) { Fabricate(:wine) }
+
+    before { set_current_user(user) }
+
+    it_behaves_like "requires sign in" do
+      let(:action) { delete :destroy, id: wine.id }
+    end
+
+    it_behaves_like "access denied" do
+      let(:action) { delete :destroy, id: wine2.id }
+    end
+
+    before { delete :destroy, id: wine.id }
+
+    it "sets the @wine variable to the selected wine" do
+      expect(assigns(:wine)).to eq(wine)
+    end
+
+    it "deletes the wine" do
+      expect(Wine.all.count).to eq(0)
+    end
+
+    it "sets the flash warning message" do
+      expect(flash[:warning]).to be_present
+    end
+  end
 end

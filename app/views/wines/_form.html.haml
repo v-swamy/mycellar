@@ -21,6 +21,6 @@
             %span.glyphicon.glyphicon-plus
         %br
           - if !@wine.new_record?
-            = button_tag @wine, method: :delete, class: "btn btn-danger form-control" do
+            = link_to @wine, method: :delete, class: "btn btn-danger form-control" do
               delete
               %i.glyphicon.glyphicon-trash
