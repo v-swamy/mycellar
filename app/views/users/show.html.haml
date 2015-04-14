@@ -1,0 +1,16 @@
+.container
+  .row
+    .col-md-5.center-block
+      #show_user
+        %h4 Your profile
+        .dl.text-center
+          %dt Name
+          %dd= current_user.name
+          %br
+          %dt Email
+          %dd= current_user.email
+          %br
+          %dt Number of Bottles
+          %dd= current_user.total_bottles
+          %br
+        = link_to "Edit profile", edit_user_path(current_user), class: "btn btn-primary center-block"

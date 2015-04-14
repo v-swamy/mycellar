@@ -1,0 +1,33 @@
+.row
+  .col-md-5
+    %h2= "#{current_user.name}'s Cellar"
+    %br
+%br
+.row
+  .col-md-12
+    .table-responsive
+      %table.tablesorter
+        %thead
+          %tr
+            %th Winery
+            %th Name
+            %th Varietal
+            %th Vintage
+            %th Region
+            %th Appellation
+            %th State
+            %th Country
+            %th Qty
+        %tbody
+          - @wines.each do |wine|
+            %tr
+              %td
+                = link_to "#{wine.winery}", edit_wine_path(wine)
+              %td= wine.name
+              %td= wine.varietal
+              %td= wine.vintage
+              %td= wine.region
+              %td= wine.appellation
+              %td= wine.state
+              %td= wine.country
+              %td= wine.quantity

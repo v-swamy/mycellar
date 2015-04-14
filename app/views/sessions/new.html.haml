@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-md-5.center-block
+      = form_tag sign_in_path, class: "form" do
+        %h4 Welcome!
+        = text_field_tag :email, params[:email] || '', class: 'form-control', placeholder: 'Email'
+        %br
+        = password_field_tag :password, params[:password] || "", class: 'form-control', placeholder: 'Password'
+        %br
+        .wrapper
+        %span.group-btn
+          = button_tag(type: "submit", class: "btn btn-success form-control") do
+            log in
+            %i.glyphicon.glyphicon-log-in

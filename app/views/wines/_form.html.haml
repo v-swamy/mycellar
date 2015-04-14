@@ -1,0 +1,26 @@
+.container
+  .row
+    .col-md-5.center-block
+      = bootstrap_form_for(@wine) do |f|
+        %h4 
+          = @wine.new_record? ? "Add a new wine" : "Edit your wine"
+        = f.text_field :winery, placeholder: "Winery", hide_label: true
+        = f.text_field :name, placeholder: "Name", hide_label: true
+        = f.text_field :varietal, placeholder: "Varietal", hide_label: true
+        = f.text_field :vintage, placeholder: "Vintage", hide_label: true
+        = f.text_field :region, placeholder: "Region", hide_label: true
+        = f.text_field :appellation, placeholder: "Appellation", hide_label: true
+        = f.text_field :state, placeholder: "State", hide_label: true
+        = f.text_field :country, placeholder: "Country", hide_label: true
+        = f.text_field :quantity, placeholder: "Quantity", hide_label: true
+        %br
+        .wrapper
+        %div.group-btn.text-center
+          = button_tag(type: "submit", class: "btn btn-success form-control") do
+            = @wine.new_record? ? "add wine" : "update wine"
+            %span.glyphicon.glyphicon-plus
+        %br
+          - if !@wine.new_record?
+            = button_tag @wine, method: :delete, class: "btn btn-danger form-control" do
+              delete
+              %i.glyphicon.glyphicon-trash
