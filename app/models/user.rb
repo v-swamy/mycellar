@@ -9,10 +9,6 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 5}, allow_nil: true
 
   def total_bottles
-    total = 0
-    wines.each do |wine|
-      total += wine.quantity
-    end
-    total
+    wines.map(&:quantity).reduce(:+)
   end
 end
