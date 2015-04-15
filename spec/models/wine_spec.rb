@@ -4,8 +4,7 @@ require 'shoulda/matchers'
 describe Wine do
   it { should validate_presence_of(:winery) }
   it { should validate_presence_of(:quantity).on(:create) }
-  it { should validate_presence_of(:user).on(:create) }
-  it { should validate_presence_of(:user).on(:update) }
+  it { should validate_presence_of(:user) }
   it { should belong_to(:user) }
 
   describe "#delete_if_zero" do

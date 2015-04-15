@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe SessionsController do
   describe "GET new" do
-    it "renders the new template for unauthenticated users" do
-      get :new
-      expect(response).to render_template(:new)
-    end
 
     it "redirects to the wines index page if user is logged in" do
       session[:user_id] = Fabricate(:user).id
@@ -57,11 +53,11 @@ describe SessionsController do
     end
   end
 
-  describe "GET destroy" do
+  describe "DELETE destroy" do
 
     before do
       session[:user_id] = Fabricate(:user).id
-      get "destroy"
+      delete "destroy"
     end
 
     it "clears the user session" do

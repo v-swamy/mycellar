@@ -4,7 +4,7 @@ class Wine < ActiveRecord::Base
 
   validates_presence_of :winery
   validates_presence_of :quantity, on: :create
-  validates_presence_of :user, on: [:create, :update]
+  validates_presence_of :user
 
   after_save :delete_if_zero
 
